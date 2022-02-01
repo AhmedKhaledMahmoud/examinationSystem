@@ -566,3 +566,16 @@ function showResult() {
   location.href = "index.html";
 }
 }
+
+
+function loginPage() {
+  location.href = "index.html";
+}
+
+function examPage() {
+  location.href = "exam.html";
+}
+
+function resultPage() {
+  location.href = "result.html";
+}
