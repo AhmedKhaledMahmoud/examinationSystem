@@ -1,7 +1,9 @@
 var nameReq = /^[A-Za-z]*$/;
 var emailReq =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-var passwordReq = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*? "]).*$/;
+ var passwordReq = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*? "]).*$/;
+
+
 
 var firstName = document.getElementById("first-name");
 var lastName = document.getElementById("last-name");
