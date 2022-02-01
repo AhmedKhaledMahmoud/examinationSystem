@@ -1,3 +1,15 @@
+function loginPage() {
+  location.href = "index.html";
+}
+
+function examPage() {
+  location.href = "exam.html";
+}
+
+function resultPage() {
+  location.href = "result.html"
+}
+
 var nameReq = /^[A-Za-z]*$/;
 var emailReq =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -568,14 +580,3 @@ function showResult() {
 }
 
 
-function loginPage() {
-  location.href = "index.html";
-}
-
-function examPage() {
-  location.href = "exam.html";
-}
-
-function resultPage() {
-  location.href = "result.html";
-}
