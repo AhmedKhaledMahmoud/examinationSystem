@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+}
+
+a
+{
+  text-decoration: none;
+  color: #000;
+}
+
+#background-image {
+  background-image: url("../images/registerbackground.jpeg");
+  height: 100vh;
+  background-size: cover;
+  text-align: center;
+}
+/* Start Page Register And Login*/
+
+#register-page h2,
+#login-page h2 {
+  padding-top: 50px;
+  color: #fff;
+}
+
+@media (max-width: 426px) {
+  #register-page h2,
+  #login-page h2 {
+    padding-top: 20px;
+  }
+}
+
+#register-page .register-form,
+#login-page .login-form {
+  background-color: #fff;
+  width: 50vw;
+  margin: 50px auto;
+  border-radius: 5px;
+  padding: 40px;
+}
+
+@media (max-width: 426px) {
+  #register-page .register-form,
+  #login-page .login-form {
+    width: 90vw;
+    margin: 30px auto;
+  }
+}
+
+#register-page .register-form form,
+#login-page .login-form form {
+  margin-top: 30px;
+}
+
+#register-page .register-form form .form-input,
+#login-page .login-form form .form-input {
+  position: relative;
+}
+
+#register-page .register-form form .form-input i,
+#login-page .login-form form .form-input i {
+  position: absolute;
+  right: 15px;
+  top: 23px;
+}
+
+#register-page .register-form form input:not(input[type="submit"]),
+#login-page .login-form form input:not(input[type="submit"]) {
+  height: 40px;
+  margin: 10px 0px;
+  width: 100%;
+  padding-left: 10px;
+  background-color: #f6f6f6;
+  border: none;
+}
+
+#register-page .register-form form .button,
+#login-page .login-form form .button {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+#register-page .register-form form input[type="submit"],
+#login-page .login-form form input[type="submit"] {
+  background-color: #ff5e13;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  margin-top: 20px;
+}
+
+#register-page .register-form form :focus-visible,
+#login-page .login-form form :focus-visible {
+  outline: none;
+}
+
+#register-page .register-form form .have-account,
+#login-page .login-form form .no-account {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#register-page .register-form form .have-account a,
+#login-page .login-form form .no-account a {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+#message-login {
+  color: red;
+  visibility: hidden;
+}
+/* End Page Register And Login*/
+
+/* Start Page Exam Page */
+
+#progress .card-body
+{
+  margin: auto;
+}
+
+#exam-page .circle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0.5rem;
+  border-radius: 50%;
+  background: #FFCDB2;
+  overflow: hidden;
+  background-image: conic-gradient(#FFCDB2 0%, #ff5e13 0);
+}
+
+#exam-page .circle .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 115px;
+  height: 115px;
+  background: #000;
+  border-radius: 50%;
+  font-size: 1.85em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+#exam-page label.radio {
+  cursor: pointer;
+}
+
+#exam-page label.radio input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#exam-page label.radio span {
+  padding: 10px;
+  border: 1px solid #ff5e13;
+  display: inline-block;
+  color: #ff5e13;
+  width: max-content;
+  text-align: center;
+  border-radius: 3px;
+  margin-top: 7px;
+  text-transform: uppercase;
+}
+
+#exam-page label.radio input:checked + span {
+  border-color: #ff5e13;
+  background-color: #ff5e13;
+  color: #fff;
+}
+
+#exam-page .btn {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+#exam-page .btn {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+#exam-page .question-title h3 
+{
+  color: #ff5e13;
+}
+
+#exam-page input[type="submit"] 
+{
+  background-color: #ff5e13;
+  color: #fff;
+  border: none;
+}
+/* End Page Exam Page */
+
+
+/* Start Page Result */
+
+#result-page .show 
+{
+  background-color: #fff;
+}
+
+/* End Page Result */

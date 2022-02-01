@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Page</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body id="background-image">
+    <div id="register-page">
+      <h2>Examination System</h2>
+      <div class="register-form">
+        <h3>Register for new account</h3>
+        <form onsubmit="registerForm(event)" action="login.html" method="POST">
+          <div class="form-input">
+            <input
+              type="text"
+              id="first-name"
+              onkeyup="validateName(this)"
+              placeholder="First Name"
+            />
+            <i id="first-name-icon"></i>
+          </div>
+          <div class="form-input">
+            <input
+              type="text"
+              id="last-name"
+              onkeyup="validateName(this)"
+              placeholder="Last Name"
+            />
+            <i id="last-name-icon"></i>
+          </div>
+          <div class="form-input">
+            <input
+              type="email"
+              id="email-user"
+              onkeyup="validateEmail(this)"
+              placeholder="Email Address"
+            />
+            <i id="email-user-icon"></i>
+          </div>
+          <div class="form-input">
+            <input
+              type="password"
+              id="password-user"
+              onkeyup="validatePassword(this)"
+              placeholder="Password"
+            />
+            <i id="password-user-icon"></i>
+          </div>
+          <div class="form-input">
+            <input
+              type="password"
+              id="confirm-password-user"
+              onkeyup="validateConfirmPassword(this)"
+              placeholder="Confirm Password"
+            />
+            <i id="confirm-password-user-icon"></i>
+          </div>
+          <div class="button">
+            <input type="submit" value="Register" />
+            <div class="have-account">
+              <p>Already have an account?</p>
+              <a href="login.html">Log in</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

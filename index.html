@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body id="background-image">
+    <div id="login-page">
+      <h2>Examination System</h2>
+      <div class="login-form">
+        <h3>Log in to continue..</h3>
+        <form onsubmit="loginForm(event)" action="exam.html" method="POST">
+         
+          <div class="form-input">
+            <input
+              type="email"
+              id="login-email-user"
+              placeholder="Email Address"
+            />
+          </div>
+          <div class="form-input">
+            <input
+              type="password"
+              id="login-password-user"
+              placeholder="Password"
+            />
+          </div>
+          <div id="message-login">
+              <p>Email Or Password Wrong</p>
+          </div>
+          <div class="button">
+            <input type="submit" value="Login" />
+            <div class="no-account">
+              <p>Don't have an account?</p>
+              <a href="resgister.html">Register</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
