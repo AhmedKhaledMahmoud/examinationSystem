@@ -7,15 +7,13 @@ function examPage() {
 }
 
 function resultPage() {
-  location.href = "result.html"
+  location.href = "result.html";
 }
 
 var nameReq = /^[A-Za-z]*$/;
 var emailReq =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
- var passwordReq = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*? "]).*$/;
-
-
+var passwordReq = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*? "]).*$/;
 
 var firstName = document.getElementById("first-name");
 var lastName = document.getElementById("last-name");
@@ -215,7 +213,6 @@ q3.addAnswer(a12);
 q3.addCorrectAnswer(a10);
 allQuestions.push(q3);
 
-
 var q4 = new Question(4, " When interpreter encounters an empty statements, what it will do:");
 var a13 = new Answer(1, "Shows a warning");
 var a14 = new Answer(2, "Prompts to complete the statement");
@@ -228,7 +225,6 @@ q4.addAnswer(a15);
 q4.addAnswer(a16);
 q4.addCorrectAnswer(a16);
 allQuestions.push(q4);
-
 
 var q5 = new Question(5, "The 'function' and  'var' are known as:");
 var a17 = new Answer(1, "Keywords");
@@ -243,7 +239,6 @@ q5.addAnswer(a20);
 q5.addCorrectAnswer(a19);
 allQuestions.push(q5);
 
-
 var q6 = new Question(6, "Which of the following variables takes precedence over the others if the names are the same?");
 var a21 = new Answer(1, "Global variable");
 var a22 = new Answer(2, "The local element");
@@ -256,7 +251,6 @@ q6.addAnswer(a23);
 q6.addAnswer(a24);
 q6.addCorrectAnswer(a22);
 allQuestions.push(q6);
-
 
 var q7 = new Question(7, "Which one of the following is the correct way for calling the JavaScript code?");
 var a25 = new Answer(1, "Preprocessor");
@@ -271,7 +265,6 @@ q7.addAnswer(a28);
 q7.addCorrectAnswer(a28);
 allQuestions.push(q7);
 
-
 var q8 = new Question(8, "Which of the following type of a variable is volatile?");
 var a29 = new Answer(1, "Mutable variable");
 var a30 = new Answer(2, "Dynamic variable");
@@ -284,7 +277,6 @@ q8.addAnswer(a31);
 q8.addAnswer(a32);
 q8.addCorrectAnswer(a29);
 allQuestions.push(q8);
-
 
 var q9 = new Question(9, "Which of the following option is used as hexadecimal literal beginning?");
 var a33 = new Answer(1, "00");
@@ -299,7 +291,6 @@ q9.addAnswer(a36);
 q9.addCorrectAnswer(a36);
 allQuestions.push(q9);
 
-
 var q10 = new Question(10, "When there is an indefinite or an infinite value during an arithmetic computation in a program, then JavaScript prints______.");
 var a37 = new Answer(1, "Prints an exception error");
 var a38 = new Answer(2, "Prints an overflow error");
@@ -312,6 +303,19 @@ q10.addAnswer(a39);
 q10.addAnswer(a40);
 q10.addCorrectAnswer(a39);
 allQuestions.push(q10);
+
+
+function shuffle(array) {
+  var shuffledArray = array.sort(function (a,b) {
+    return 0.5 - Math.random();
+  });
+
+  return shuffledArray;
+}
+
+shuffle(allQuestions);
+
+
 
 //////////////////////////// Show Questions ///////////////////////////////////
 
@@ -335,6 +339,7 @@ function showQuestion(page) {
   var page_span = document.getElementById("page");
   currentPage = page;
 
+
   page_span.textContent =
     "( " + currentPage + " Of " + allQuestions.length + " )";
 
@@ -355,6 +360,7 @@ function showQuestion(page) {
     var input = document.createElement("input");
     input.type = "radio";
     input.name = "qusetion" + allQuestions[page - 1].id;
+    input.setAttribute("currentQuestion", page);
     input.value = allQuestions[page - 1].answers[j].answer;
     input.id = "answer" + allQuestions[page - 1].answers[j].id;
     input.setAttribute("answerid", allQuestions[page - 1].answers[j].id);
@@ -367,14 +373,17 @@ function showQuestion(page) {
     div.append(label);
     answers.append(div);
     if (
-      input.getAttribute("answerid") == studentAnswer[input.name.slice(8) - 1]
+      input.getAttribute("answerid") ==
+      studentAnswer[input.getAttribute("currentQuestion") - 1]
     ) {
       input.checked = "checked";
     }
   }
 
-  if (markedQuestion.includes(allQuestions[page - 1].id)) {
+
+  if (markedQuestion.includes(currentPage)) {
     var markedQuestionButton = document.getElementById("markedQuestion");
+
     markedQuestionButton.href = "javascript:removemarkedquestion()";
     markedQuestionButton.textContent = "Un Mark";
   } else {
@@ -398,51 +407,47 @@ function showQuestion(page) {
 
 function showSelected() {
   if (this.checked) {
-    var index = this.name.slice(8);
+    var index = this.getAttribute("currentQuestion");
     studentAnswer[index - 1] = this.getAttribute("answerid");
   }
 }
 
 function startExam() {
+  if (JSON.parse(localStorage.getItem("studentLogin")) == true) {
+    showQuestion(1);
 
+    let startWidth = 0;
+    var allTime = 300;
+    document.querySelector(".inner").textContent = "05 : 00";
+    setInterval(function () {
+      if (allTime == 0) {
+        studentResult();
+        location.href = "result.html";
+      }
+      var minutes = Math.floor(allTime / 60);
+      var seconds = Math.floor(allTime % 60);
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+      document.querySelector(".inner").textContent = minutes + " : " + seconds;
+      allTime = allTime - 1;
+    }, 1000);
 
-
-if(JSON.parse( localStorage.getItem("studentLogin")) == true) {
-  showQuestion(1);
-
-  let startWidth = 0;
-  var allTime = 300;
-  document.querySelector(".inner").textContent =  "05 : 00"; 
-  setInterval(function () {
-    if (allTime == 0) {
-      studentResult();
-      location.href = "result.html";
-    }
-    var minutes = Math.floor(allTime / 60);
-    var seconds = Math.floor( allTime % 60 );
-    if(minutes < 10) {
-      minutes = "0"+minutes;
-    }
-    if(seconds < 10) {
-      seconds = "0"+seconds;
-    }
-    document.querySelector(".inner").textContent =  minutes + " : " + seconds; 
-    allTime = allTime - 1;
-  }, 1000);
-
-  setInterval(function () {    
-    document.querySelector("#exam-page .circle").style.backgroundImage = "conic-gradient(#FFCDB2 "+ startWidth + "%, #ff5e13 0)";
-    if (startWidth == 100) {
-      studentResult();
-      location.href = "result.html";
-    }
-    startWidth += 0.250;
-  }, 750);
-} else {
-  location.href = "index.html"
-}
-
-  
+    setInterval(function () {
+      document.querySelector("#exam-page .circle").style.backgroundImage =
+        "conic-gradient(#FFCDB2 " + startWidth + "%, #ff5e13 0)";
+      if (startWidth == 100) {
+        studentResult();
+        location.href = "result.html";
+      }
+      startWidth += 0.25;
+    }, 750);
+  } else {
+    location.href = "index.html";
+  }
 }
 
 function numPages() {
@@ -465,7 +470,6 @@ function prevPage() {
 
 function markedquestion() {
   markedQuestion.push(currentPage);
-
   if (markedQuestion.includes(currentPage)) {
     var markedQuestionButton = document.getElementById("markedQuestion");
     markedQuestionButton.href = "javascript:removemarkedquestion()";
@@ -530,53 +534,53 @@ function studentResult() {
 }
 
 function showResult() {
-  if(JSON.parse( localStorage.getItem("studentLogin")) == true) {
-  var table = document.getElementById("table");
-  var result = 0;
-  if (JSON.parse(localStorage.getItem("studentData") !== null)) {
-    var studentInfo = JSON.parse(localStorage.getItem("studentData"));
-  }
-  if (
-
-      localStorage.getItem("studentAnswer") !== null &&
-        localStorage.getItem("allQuestions") !== null
-    
-  ) {
-    var allQuestions = JSON.parse(localStorage.getItem("allQuestions"));
-    var studentAnswer = JSON.parse(localStorage.getItem("studentAnswer"));
-    for (var i = 0; i < allQuestions.length; i++) {
-      for (var j = 0; j < allQuestions[i].answers.length; j++) {
-        if (studentAnswer[i] == allQuestions[i].answers[j].id) {
-          var studentAnswerVAlue = allQuestions[i].answers[j].answer;
-        }
-
-        if (allQuestions[i].correctAnswer == allQuestions[i].answers[j].id) {
-          var correctAnswerValue = allQuestions[i].answers[j].answer;
-        }
-      }
-      if (studentAnswer[i] == allQuestions[i].correctAnswer) {
-        result = result + 1;
-        var tr = document.createElement("tr");
-
-        tr.innerHTML = `<td> ${allQuestions[i].id} </td> <td> ${allQuestions[i].question} </td> <td> ${studentAnswerVAlue}  </td> <td> ${correctAnswerValue} </td> <td> <i style="color: green" class="fa fa-check"></i> </td>`;
-
-        table.append(tr);
-      } else {
-        var tr = document.createElement("tr");
-
-        tr.innerHTML = `<td> ${allQuestions[i].id} </td> <td> ${allQuestions[i].question} </td> <td> ${studentAnswerVAlue}  </td> <td> ${correctAnswerValue} </td> <td> <i style="color: red" class="fa fa-times"></i> </td>`;
-
-        table.append(tr);
-      }
+  if (JSON.parse(localStorage.getItem("studentLogin")) == true) {
+    var table = document.getElementById("table");
+    var result = 0;
+    if (JSON.parse(localStorage.getItem("studentData") !== null)) {
+      var studentInfo = JSON.parse(localStorage.getItem("studentData"));
     }
+    if (
+      localStorage.getItem("studentAnswer") !== null &&
+      localStorage.getItem("allQuestions") !== null
+    ) {
+      var allQuestions = JSON.parse(localStorage.getItem("allQuestions"));
+      var studentAnswer = JSON.parse(localStorage.getItem("studentAnswer"));
+      for (var i = 0; i < allQuestions.length; i++) {
+        for (var j = 0; j < allQuestions[i].answers.length; j++) {
+          if (studentAnswer[i] == allQuestions[i].answers[j].id) {
+            var studentAnswerVAlue = allQuestions[i].answers[j].answer;
+          }
 
+          if (allQuestions[i].correctAnswer == allQuestions[i].answers[j].id) {
+            var correctAnswerValue = allQuestions[i].answers[j].answer;
+          }
+        }
+        if (studentAnswer[i] == allQuestions[i].correctAnswer) {
+          result = result + 1;
+          var tr = document.createElement("tr");
 
-     document.querySelector(".finalResult .card-title").innerHTML = "Hello "+ studentInfo[0] + " " + studentInfo[1] +  " Your Result Is "+ result;
-    
+          tr.innerHTML = `<td> ${allQuestions[i].id} </td> <td> ${allQuestions[i].question} </td> <td> ${studentAnswerVAlue}  </td> <td> ${correctAnswerValue} </td> <td> <i style="color: green" class="fa fa-check"></i> </td>`;
+
+          table.append(tr);
+        } else {
+          var tr = document.createElement("tr");
+
+          tr.innerHTML = `<td> ${allQuestions[i].id} </td> <td> ${allQuestions[i].question} </td> <td> ${studentAnswerVAlue}  </td> <td> ${correctAnswerValue} </td> <td> <i style="color: red" class="fa fa-times"></i> </td>`;
+
+          table.append(tr);
+        }
+      }
+
+      document.querySelector(".finalResult .card-title").innerHTML =
+        "Hello " +
+        studentInfo[0] +
+        " " +
+        studentInfo[1] +
+        " Your Result Is " +
+        result;
+    }
+  } else {
+    location.href = "index.html";
   }
-} else {
-  location.href = "index.html";
 }
-}
-
-

@@ -104,12 +104,15 @@ a
 #login-page .login-form form .no-account {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 #register-page .register-form form .have-account a,
 #login-page .login-form form .no-account a {
   margin-left: 10px;
   text-decoration: none;
+  color: #ff5e13;
+  font-weight: bold;
 }
 
 #message-login {
@@ -171,11 +174,9 @@ a
   border: 1px solid #ff5e13;
   display: inline-block;
   color: #ff5e13;
-  width: max-content;
-  text-align: center;
+  max-width: 100%;
   border-radius: 3px;
   margin-top: 7px;
-  text-transform: uppercase;
 }
 
 #exam-page label.radio input:checked + span {
@@ -205,6 +206,14 @@ a
   color: #fff;
   border: none;
 }
+
+#marked-qusestions
+{
+  display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 /* End Page Exam Page */
 
 
