@@ -1,3 +1,20 @@
+document.onkeydown = function ()
+{
+    if (event.keyCode == 116) {
+        event.keyCode = 0;
+        event.cancelBubble = true;
+        return false;
+    }
+}
+
+
+document.oncontextmenu = function () {
+    return false;
+}
+
+
+
+
 function loginPage() {
   location.href = "index.html";
 }
@@ -413,6 +430,11 @@ function showSelected() {
 }
 
 function startExam() {
+
+  window.onbeforeunload = function() {
+  return false;
+}
+
   if (JSON.parse(localStorage.getItem("studentLogin")) == true) {
     showQuestion(1);
 
