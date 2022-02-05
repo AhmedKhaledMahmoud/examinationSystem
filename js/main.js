@@ -431,9 +431,9 @@ function showSelected() {
 
 function startExam() {
 
-  window.onbeforeunload = function() {
-  return false;
-}
+//   window.onbeforeunload = function() {
+//   return false;
+// }
 
   if (JSON.parse(localStorage.getItem("studentLogin")) == true) {
     showQuestion(1);
