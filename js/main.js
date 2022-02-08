@@ -1,19 +1,14 @@
-document.onkeydown = function ()
-{
-    if (event.keyCode == 116) {
-        event.keyCode = 0;
-        event.cancelBubble = true;
-        return false;
-    }
-}
-
+document.onkeydown = function () {
+  if (event.keyCode == 116) {
+    event.keyCode = 0;
+    event.cancelBubble = true;
+    return false;
+  }
+};
 
 document.oncontextmenu = function () {
-    return false;
-}
-
-
-
+  return false;
+};
 
 function loginPage() {
   location.href = "index.html";
@@ -204,7 +199,10 @@ q1.addCorrectAnswer(a2);
 
 allQuestions.push(q1);
 
-var q2 = new Question(2, "Which one of the following also known as Conditional Expression:");
+var q2 = new Question(
+  2,
+  "Which one of the following also known as Conditional Expression:"
+);
 var a5 = new Answer(1, "Alternative to if-else");
 var a6 = new Answer(2, "Switch statement");
 var a7 = new Answer(3, "If-then-else statement");
@@ -219,7 +217,10 @@ allQuestions.push(q2);
 
 var q3 = new Question(3, "In JavaScript, what is a block of statement?");
 var a9 = new Answer(1, "Conditional block");
-var a10 = new Answer(2, "block that combines a number of statements into a single compound statement");
+var a10 = new Answer(
+  2,
+  "block that combines a number of statements into a single compound statement"
+);
 var a11 = new Answer(3, "both conditional block and a single statement");
 var a12 = new Answer(4, "block that contains a single statement");
 
@@ -230,7 +231,10 @@ q3.addAnswer(a12);
 q3.addCorrectAnswer(a10);
 allQuestions.push(q3);
 
-var q4 = new Question(4, " When interpreter encounters an empty statements, what it will do:");
+var q4 = new Question(
+  4,
+  " When interpreter encounters an empty statements, what it will do:"
+);
 var a13 = new Answer(1, "Shows a warning");
 var a14 = new Answer(2, "Prompts to complete the statement");
 var a15 = new Answer(3, "Throws an error");
@@ -256,7 +260,10 @@ q5.addAnswer(a20);
 q5.addCorrectAnswer(a19);
 allQuestions.push(q5);
 
-var q6 = new Question(6, "Which of the following variables takes precedence over the others if the names are the same?");
+var q6 = new Question(
+  6,
+  "Which of the following variables takes precedence over the others if the names are the same?"
+);
 var a21 = new Answer(1, "Global variable");
 var a22 = new Answer(2, "The local element");
 var a23 = new Answer(3, "The two of the above");
@@ -269,7 +276,10 @@ q6.addAnswer(a24);
 q6.addCorrectAnswer(a22);
 allQuestions.push(q6);
 
-var q7 = new Question(7, "Which one of the following is the correct way for calling the JavaScript code?");
+var q7 = new Question(
+  7,
+  "Which one of the following is the correct way for calling the JavaScript code?"
+);
 var a25 = new Answer(1, "Preprocessor");
 var a26 = new Answer(2, "Triggering Event");
 var a27 = new Answer(3, "RMI");
@@ -282,7 +292,10 @@ q7.addAnswer(a28);
 q7.addCorrectAnswer(a28);
 allQuestions.push(q7);
 
-var q8 = new Question(8, "Which of the following type of a variable is volatile?");
+var q8 = new Question(
+  8,
+  "Which of the following type of a variable is volatile?"
+);
 var a29 = new Answer(1, "Mutable variable");
 var a30 = new Answer(2, "Dynamic variable");
 var a31 = new Answer(3, "Volatile variable");
@@ -295,7 +308,10 @@ q8.addAnswer(a32);
 q8.addCorrectAnswer(a29);
 allQuestions.push(q8);
 
-var q9 = new Question(9, "Which of the following option is used as hexadecimal literal beginning?");
+var q9 = new Question(
+  9,
+  "Which of the following option is used as hexadecimal literal beginning?"
+);
 var a33 = new Answer(1, "00");
 var a34 = new Answer(2, "0x");
 var a35 = new Answer(3, "0X");
@@ -308,7 +324,10 @@ q9.addAnswer(a36);
 q9.addCorrectAnswer(a36);
 allQuestions.push(q9);
 
-var q10 = new Question(10, "When there is an indefinite or an infinite value during an arithmetic computation in a program, then JavaScript prints______.");
+var q10 = new Question(
+  10,
+  "When there is an indefinite or an infinite value during an arithmetic computation in a program, then JavaScript prints______."
+);
 var a37 = new Answer(1, "Prints an exception error");
 var a38 = new Answer(2, "Prints an overflow error");
 var a39 = new Answer(3, "Displays 'Infinity'");
@@ -321,9 +340,8 @@ q10.addAnswer(a40);
 q10.addCorrectAnswer(a39);
 allQuestions.push(q10);
 
-
 function shuffle(array) {
-  var shuffledArray = array.sort(function (a,b) {
+  var shuffledArray = array.sort(function (a, b) {
     return 0.5 - Math.random();
   });
 
@@ -331,8 +349,6 @@ function shuffle(array) {
 }
 
 shuffle(allQuestions);
-
-
 
 //////////////////////////// Show Questions ///////////////////////////////////
 
@@ -355,7 +371,6 @@ function showQuestion(page) {
   var btn_prev = document.getElementById("btn_prev");
   var page_span = document.getElementById("page");
   currentPage = page;
-
 
   page_span.textContent =
     "( " + currentPage + " Of " + allQuestions.length + " )";
@@ -397,7 +412,6 @@ function showQuestion(page) {
     }
   }
 
-
   if (markedQuestion.includes(currentPage)) {
     var markedQuestionButton = document.getElementById("markedQuestion");
 
@@ -430,10 +444,9 @@ function showSelected() {
 }
 
 function startExam() {
-
-//   window.onbeforeunload = function() {
-//   return false;
-// }
+  //   window.onbeforeunload = function() {
+  //   return false;
+  // }
 
   if (JSON.parse(localStorage.getItem("studentLogin")) == true) {
     showQuestion(1);
@@ -582,13 +595,13 @@ function showResult() {
           result = result + 1;
           var tr = document.createElement("tr");
 
-          tr.innerHTML = `<td> ${allQuestions[i].id} </td> <td> ${allQuestions[i].question} </td> <td> ${studentAnswerVAlue}  </td> <td> ${correctAnswerValue} </td> <td> <i style="color: green" class="fa fa-check"></i> </td>`;
+          tr.innerHTML = `<td> ${allQuestions[i].question} </td> <td> ${studentAnswerVAlue}  </td> <td> ${correctAnswerValue} </td> <td> <i style="color: green" class="fa fa-check"></i> </td>`;
 
           table.append(tr);
         } else {
           var tr = document.createElement("tr");
 
-          tr.innerHTML = `<td> ${allQuestions[i].id} </td> <td> ${allQuestions[i].question} </td> <td> ${studentAnswerVAlue}  </td> <td> ${correctAnswerValue} </td> <td> <i style="color: red" class="fa fa-times"></i> </td>`;
+          tr.innerHTML = ` <td> ${allQuestions[i].question} </td> <td> ${studentAnswerVAlue}  </td> <td> ${correctAnswerValue} </td> <td> <i style="color: red" class="fa fa-times"></i> </td>`;
 
           table.append(tr);
         }
