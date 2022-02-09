@@ -581,7 +581,9 @@ function showResult() {
     ) {
       var allQuestions = JSON.parse(localStorage.getItem("allQuestions"));
       var studentAnswer = JSON.parse(localStorage.getItem("studentAnswer"));
+      console.log(studentAnswer);
       for (var i = 0; i < allQuestions.length; i++) {
+        studentAnswerVAlue = "";
         for (var j = 0; j < allQuestions[i].answers.length; j++) {
           if (studentAnswer[i] == allQuestions[i].answers[j].id) {
             var studentAnswerVAlue = allQuestions[i].answers[j].answer;
@@ -605,6 +607,7 @@ function showResult() {
 
           table.append(tr);
         }
+        
       }
 
       document.querySelector(".finalResult .card-title").innerHTML =
